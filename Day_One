@@ -16,7 +16,9 @@ for line in df['Measurements']:
     i += 1
 
 # Checking the last row of the dataset
-    if i == 1999:
+# It is subtracted by one as the first row is == 0
+# so the last row is going to be equal the length of the dataset - 1
+    if i == (len(df)-1):
         if df.Measurements.loc[i] > df.Measurements.loc[i-1]:
             m += 1
             break
@@ -35,8 +37,8 @@ i = 2
 
 for line in df['Measurements']:
     i += 1
-        
-    if i == 1999:
+    
+    if i == (len(df)-1):
         if (df.Measurements.loc[i]+df.Measurements.loc[i-1]+
             df.Measurements.loc[i-2]) > (df.Measurements.loc[i-1]+
                                          df.Measurements.loc[i-2]+df.Measurements.loc[i-3]):
