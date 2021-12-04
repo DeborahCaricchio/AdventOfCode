@@ -1,0 +1,29 @@
+import pandas as pd
+import warnings
+warnings.filterwarnings("ignore")
+
+
+# Getting the file from txt to csv
+df = pd.read_csv('input_dayone.txt', header = None)
+df.columns = ['Measurements']
+
+# TASK 1
+# Printing the number of measurements greater than the previous one
+m = 0
+i = 0
+
+for line in df['Measurements']:
+    i += 1
+        
+    if i == 1999:
+        if df.Measurements.loc[i] > df.Measurements.loc[i-1]:
+            m += 1
+            break
+ 
+    elif df.Measurements.loc[i] > df.Measurements.loc[i-1]:
+            m += 1
+            
+print(m)
+
+
+# TASK 2
