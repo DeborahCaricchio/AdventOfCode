@@ -14,7 +14,8 @@ i = 0
 
 for line in df['Measurements']:
     i += 1
-        
+
+# Checking the last row of the dataset
     if i == 1999:
         if df.Measurements.loc[i] > df.Measurements.loc[i-1]:
             m += 1
