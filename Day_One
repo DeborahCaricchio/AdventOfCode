@@ -30,3 +30,24 @@ print(m)
 
 
 # TASK 2
+m = 0
+i = 2
+
+for line in df['Measurements']:
+    i += 1
+        
+    if i == 1999:
+        if (df.Measurements.loc[i]+df.Measurements.loc[i-1]+
+            df.Measurements.loc[i-2]) > (df.Measurements.loc[i-1]+
+                                         df.Measurements.loc[i-2]+df.Measurements.loc[i-3]):
+            m += 1
+            break
+ 
+    elif (df.Measurements.loc[i]+df.Measurements.loc[i-1]+
+        df.Measurements.loc[i-2]) > (df.Measurements.loc[i-1]+
+                                     df.Measurements.loc[i-2]+df.Measurements.loc[i-3]):
+        m += 1
+    
+
+
+print(m)
