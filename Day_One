@@ -21,6 +21,8 @@ for line in df['Measurements']:
             m += 1
             break
  
+ # Checking all the rows but the last one and the first one since the first one
+ # does not have a previous row
     elif df.Measurements.loc[i] > df.Measurements.loc[i-1]:
             m += 1
             
