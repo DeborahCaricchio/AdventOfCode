@@ -46,7 +46,33 @@ print('The multiplication result for the horizontal position and the final deept
 
 
 # ---------------------------- TASK 2 ----------------------------
+# horizontal
+h = 0
 
+# deepth
+d = 0
+
+# aim
+a = 0
+
+for index, row in df2.iterrows():
+    if row['Direction'] == 'forward':
+        h += row['Number']
+        d += (row['Number']*a)
+        
+    elif row['Direction'] == 'down':
+        a += row['Number']
+        
+    elif row['Direction'] == 'up':
+        a -= row['Number']
+        
+    else:
+        print('Direction not found.')
+    
+print('The final horizontal position is: ', h)
+print('The final deepth is: ', d)
+
+print('The multiplication result for the horizontal position and the final deepth is: ', h*d)
         
 
         
