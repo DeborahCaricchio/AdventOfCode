@@ -1,0 +1,53 @@
+df3 = pd.read_csv('input_day3.txt', header = None, dtype=str)
+df3.columns = ['BinaryNumbers']
+
+i = 0
+
+while i <= (int(df3['BinaryNumbers'].astype(bytes).str.len().max())-1):
+    x = df3.BinaryNumbers.str[i:i+1]
+    i += 1
+    
+    
+    for index, item in x.value_counts().iteritems():
+        print(index, item)
+        
+
+
+# ----------------------------- TASK 1 ----------------------------- 
+gamma = '001100010000'
+epsilon = '110011101111'
+
+# As they have the same amount of digits, we just need to know the length of one of them
+#j = len(len(range(gamma)))
+i = 0
+w = 0
+j = (len(gamma)-1)
+p = (len(epsilon)-1)
+gamma_rate = 0
+epsilon_rate = 0
+
+
+# as they have the same length, we can use the same while loop for both
+while i < len(gamma):
+    dg = pd.to_numeric(gamma[i], errors = 'coerce')
+    gamma_rate += (dg*(2**j))
+    
+    i += 1
+    j -= 1
+
+while w < len(epsilon):
+    de = pd.to_numeric(epsilon[w], errors = 'coerce')
+    epsilon_rate += (de*(2**p))
+    
+    w += 1
+    p -= 1
+
+print(gamma_rate)
+print(epsilon_rate)
+
+print('The power consumption is ', gamma_rate*epsilon_rate)
+
+
+
+
+# ----------------------------- TASK 2 ----------------------------- 
