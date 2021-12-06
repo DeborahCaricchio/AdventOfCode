@@ -1,7 +1,7 @@
 df2 = pd.read_csv('input_day2.txt', header = None)
 df2.columns = ['Navigation']
 
-# Here we are spliting the column Navigation into two different columns, one with the Direction and another one with the Number of 
+# Here we are splitting the column Navigation into two different columns, one with the Direction and another one with the Number of 
 # 'steps' for each direction
 df2[['Direction','Number']] = df2.Navigation.str.split(" ",expand=True,)
 
