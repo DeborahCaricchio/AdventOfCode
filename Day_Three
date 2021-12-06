@@ -20,9 +20,7 @@ epsilon = '110011101111'
 # As they have the same amount of digits, we just need to know the length of one of them
 #j = len(len(range(gamma)))
 i = 0
-w = 0
 j = (len(gamma)-1)
-p = (len(epsilon)-1)
 gamma_rate = 0
 epsilon_rate = 0
 
@@ -31,21 +29,22 @@ epsilon_rate = 0
 while i < len(gamma):
     dg = pd.to_numeric(gamma[i], errors = 'coerce')
     gamma_rate += (dg*(2**j))
+
+    de = pd.to_numeric(epsilon[i], errors = 'coerce')
+    epsilon_rate += (de*(2**j))
     
+        
     i += 1
     j -= 1
 
-while w < len(epsilon):
-    de = pd.to_numeric(epsilon[w], errors = 'coerce')
-    epsilon_rate += (de*(2**p))
-    
-    w += 1
-    p -= 1
 
 print(gamma_rate)
 print(epsilon_rate)
 
 print('The power consumption is ', gamma_rate*epsilon_rate)
+
+
+
 
 
 
