@@ -1,0 +1,52 @@
+df2 = pd.read_csv('input_day2.txt', header = None)
+df2.columns = ['Navigation']
+
+# Here we are spliting the column Navigation into two different columns, one with the Direction and another one with the Number of 
+# 'steps' for each direction
+df2[['Direction','Number']] = df2.Navigation.str.split(" ",expand=True,)
+
+# Dropping the old column as it is repeated and not necessary
+df2.drop('Navigation', axis=1, inplace=True)
+
+# Changing the column to numeric so we can sum the numbers 
+df2['Number'] = pd.to_numeric(df2['Number'],errors = 'coerce')
+#df2.info()
+
+df2
+
+
+# ---------------------------- TASK 1 ----------------------------
+# horizontal
+h = 0
+
+# deepth
+d = 0
+
+for index, row in df2.iterrows():
+    if row['Direction'] == 'forward':
+        h += row['Number']
+        #print(h)
+        
+    elif row['Direction'] == 'down':
+        d += row['Number']
+        #print(d)
+        
+    elif row['Direction'] == 'up':
+        d -= row['Number']
+        #print(d)
+        
+    else:
+        print('Direction not found.')
+    
+print('The final horizontal position is: ', h)
+print('The final deepth is: ', d)
+
+print('The multiplication result for the horizontal position and the final deepth is: ', h*d)
+
+
+
+# ---------------------------- TASK 2 ----------------------------
+
+        
+
+        
