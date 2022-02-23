@@ -1,6 +1,7 @@
 # TASK 1
 # Count the number of times a depth measurement increases
 
+
 with open("day1.txt","r") as df:
 
   day_one = df.readlines()
@@ -15,6 +16,8 @@ with open("day1.txt","r") as df:
     
   print(total_increases)
 
+
+# Comment section: If the file is very huge, this code could be run in parallel as the numbers, in some point, are in ascending order.
 
 # _____________________________________________
 
