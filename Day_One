@@ -1,35 +1,22 @@
-import pandas as pd
-import warnings
-warnings.filterwarnings("ignore")
-
-
-# Getting the file from txt to csv
-df = pd.read_csv('input_dayone.txt', header = None)
-df.columns = ['Measurements']
-
 # TASK 1
-# Printing the number of measurements greater than the previous one
-m = 0
-i = 0
+# Count the number of times a depth measurement increases
 
-for line in df['Measurements']:
-    i += 1
+with open("day1.txt","r") as df:
 
-# Checking the last row of the dataset
-# It is subtracted by one as the first row is == 0
-# so the last row is going to be equal the length of the dataset - 1
-    if i == (len(df)-1):
-        if df.Measurements.loc[i] > df.Measurements.loc[i-1]:
-            m += 1
-            break
- 
- # Checking all the rows but the last one and the first one since the first one
- # does not have a previous row
-    elif df.Measurements.loc[i] > df.Measurements.loc[i-1]:
-            m += 1
-            
-print(m)
+  day_one = df.readlines()
+  previous = int(day_one[0].strip())      # Getting the very first element in the file
+  total_increases = 0
+  
+  for line in day_one[1:]:
+    line = int(line.strip())    # Getting rid of the blank spaces after the number and also changing the data type
+    if line > previous:         
+      total_increases += 1      # Counting the number of times the following number was greater than the previous number
+    previous = line
+    
+  print(total_increases)
 
+
+# _____________________________________________
 
 # TASK 2
 m = 0
