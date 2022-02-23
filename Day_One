@@ -22,24 +22,18 @@ with open("day1.txt","r") as df:
 # _____________________________________________
 
 # TASK 2
-m = 0
-i = 2
+with open("day1.txt","r") as df:
 
-for line in df['Measurements']:
-    i += 1
+  day_one = df.readlines()
+  previous = int(day_one[0].strip()) + int(day_one[1].strip()) + int(day_one[2].strip())
+  total_increases_bythree = 0
+  
+  for i in range(1,len(day_one)-2):
+    sum = int(day_one[i].strip()) + int(day_one[i+1].strip()) + int(day_one[i+2].strip())
+    if sum > previous:
+      total_increases_bythree += 1
     
-    if i == (len(df)-1):
-        if (df.Measurements.loc[i]+df.Measurements.loc[i-1]+
-            df.Measurements.loc[i-2]) > (df.Measurements.loc[i-1]+
-                                         df.Measurements.loc[i-2]+df.Measurements.loc[i-3]):
-            m += 1
-            break
- 
-    elif (df.Measurements.loc[i]+df.Measurements.loc[i-1]+
-        df.Measurements.loc[i-2]) > (df.Measurements.loc[i-1]+
-                                     df.Measurements.loc[i-2]+df.Measurements.loc[i-3]):
-        m += 1
+    previous = sum
     
 
-
-print(m)
+  print(total_increases_bythree)
