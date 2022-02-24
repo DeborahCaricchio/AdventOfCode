@@ -1,47 +1,41 @@
-df3 = pd.read_csv('input_day3.txt', header = None, dtype=str)
-df3.columns = ['BinaryNumbers']
-
-i = 0
-
-while i <= (int(df3['BinaryNumbers'].astype(bytes).str.len().max())-1):
-    x = df3.BinaryNumbers.str[i:i+1]
-    i += 1
-    
-    
-    for index, item in x.value_counts().iteritems():
-        print(index, item)
-        
-
 
 # ----------------------------- TASK 1 ----------------------------- 
-gamma = '001100010000'
-epsilon = '110011101111'
+with open("day3.txt","r") as df:
 
-# As they have the same amount of digits, we just need to know the length of one of them
-#j = len(len(range(gamma)))
-i = 0
-j = (len(gamma)-1)
-gamma_rate = 0
-epsilon_rate = 0
-
-
-# as they have the same length, we can use the same while loop for both
-while i < len(gamma):
-    dg = pd.to_numeric(gamma[i], errors = 'coerce')
-    gamma_rate += (dg*(2**j))
-
-    de = pd.to_numeric(epsilon[i], errors = 'coerce')
-    epsilon_rate += (de*(2**j))
+  def main():
+    data = df.readlines()
+    power_consp = []
     
-        
-    i += 1
-    j -= 1
+    for item in data:
+      power_consp.append(list(map(str, item.strip())))
+
+    return (calc_gamma_epsilon(power_consp))
 
 
-print(gamma_rate)
-print(epsilon_rate)
+  def calc_gamma_epsilon(power_consp):
+    gamma_rate = ''
+    epsilon_rate = ''
 
-print('The power consumption is ', gamma_rate*epsilon_rate)
+    for j in range(len(power_consp[0])):
+      zero = 0
+      ones = 0
+      for i in power_consp:
+        if i[j] == '0':
+          zero += 1
+        else:
+          ones += 1
+
+      if zero > ones:
+        gamma_rate += '0'
+        epsilon_rate += '1'
+      else:
+        gamma_rate += '1'
+        epsilon_rate += '0'
+  
+    return (int(gamma_rate,2)) * (int(epsilon_rate,2))
+
+
+  print(main())
 
 
 
